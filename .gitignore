@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.context-forge/
+*.db
+*.db-shm
+*.db-wal
+.DS_Store
+coverage/

@@ -1,0 +1,57 @@
+{
+  "documents": [
+    {
+      "id": "payments-policy-v1",
+      "title": "Payments Policy v1",
+      "content": "Retail payments are aggregated per customer and reset daily at midnight UTC.",
+      "type": "business_rule",
+      "source": {
+        "type": "confluence",
+        "id": "payments-policy",
+        "url": "https://example.invalid/wiki/payments-policy"
+      },
+      "context": {
+        "domain": "payments",
+        "feature": "daily-limit",
+        "product": "retail"
+      },
+      "status": "active",
+      "version": 1,
+      "requirements": [
+        {
+          "id": "payments.limit.scope",
+          "statement": "Retail payment totals are aggregated per customer.",
+          "kind": "verified"
+        }
+      ],
+      "unknowns": [],
+      "relationships": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "PAY-100",
+      "title": "Change the retail payment limit",
+      "description": "Update the configured retail payment limit.",
+      "status": "open",
+      "context": {
+        "domain": "payments",
+        "feature": "daily-limit",
+        "product": "retail"
+      },
+      "acceptanceCriteria": [
+        "The configured retail payment limit is updated to the approved value."
+      ],
+      "linkedDocumentIds": ["payments-policy-v1"],
+      "unknowns": [
+        {
+          "id": "new-limit-value",
+          "question": "What is the approved new retail payment limit?",
+          "reason": "The task does not state the target value.",
+          "impact": "Implementation cannot select a safe configuration value.",
+          "required": true
+        }
+      ]
+    }
+  ]
+}
